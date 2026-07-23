@@ -25,7 +25,12 @@ const projects = [
     description:
       "Soluções personalizadas para simplificar processos e rotinas de trabalho.",
     url: "#contato",
-    tech: ["Python", "VBA", "Power Automate"]
+    tech: ["Python", "VBA", "Power Automate"],
+    images: [
+      "fer/1fer.png",
+      "fer/2fer.png",
+      "fer/3fer.png"
+    ]
   },
   {
     title: "Planilhas",
@@ -33,7 +38,11 @@ const projects = [
     description:
       "Planilhas inteligentes para controle, organização e produtividade.",
     url: "#contato",
-    tech: ["Excel", "VBA", "Power Query"]
+    tech: ["Excel", "VBA", "Power Query"],
+    images: [
+      "Plans/1plan.png",
+      "Plans/2plan.png"
+    ]
   }
 ];
 
