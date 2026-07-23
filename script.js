@@ -54,9 +54,16 @@ projects.forEach((project, index) => {
         <button class="project-gallery-arrow project-gallery-arrow-next" type="button" aria-label="Próxima imagem">&rsaquo;</button>
       </div>
     ` : ""}
+    <div class="project-top">
+      <span class="project-tag">${project.category}</span>
+      <a class="project-link" href="${project.url}">Conversar <span aria-hidden="true">-&gt;</span></a>
+    </div>
     <div>
       <h3>${project.title}</h3>
       <p>${project.description}</p>
+    </div>
+    <div class="project-tech">
+      ${project.tech.map((item) => `<span>${item}</span>`).join("")}
     </div>
   `;
 

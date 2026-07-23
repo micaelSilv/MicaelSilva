@@ -728,9 +728,10 @@ a {
   place-items: center;
   width: 24px;
   height: 36px;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 6px;
   padding: 0;
-  background: transparent;
+  background: rgba(13, 13, 13, 0.72);
   color: #fff;
   font: inherit;
   font-size: 2rem;
@@ -738,7 +739,15 @@ a {
   line-height: 1;
   transform: translateY(-50%);
   cursor: pointer;
-  transition: none;
+  transition: background-color 180ms ease, border-color 180ms ease;
+  z-index: 1;
+}
+
+.project-gallery-arrow:hover,
+.project-gallery-arrow:focus-visible {
+  border-color: var(--accent);
+  background: rgba(13, 13, 13, 0.94);
+  outline: none;
 }
 
 .project-gallery-arrow-prev {
@@ -747,6 +756,44 @@ a {
 
 .project-gallery-arrow-next {
   right: 10px;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-tag {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(239, 125, 50, 0.14);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-link {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tech span {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .projects-grid article + article {
