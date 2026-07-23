@@ -758,44 +758,6 @@ a {
   right: 10px;
 }
 
-.project-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.project-tag {
-  display: inline-flex;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  background: rgba(239, 125, 50, 0.14);
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.project-link {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.project-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.project-tech span {
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
 .projects-grid article + article {
   border-left: 1px solid var(--line);
   padding-left: 42px;
