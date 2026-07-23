@@ -27,6 +27,7 @@ const projects = [
 
 const projectsGrid = document.getElementById("projects-grid");
 const currentYear = document.getElementById("current-year");
+const copyEmailButton = document.querySelector("[data-copy-email]");
 
 projects.forEach((project, index) => {
   const article = document.createElement("article");
@@ -71,3 +72,14 @@ const observer = new IntersectionObserver(
 document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
 
 currentYear.textContent = new Date().getFullYear();
+
+copyEmailButton?.addEventListener("click", async () => {
+  const email = copyEmailButton.dataset.copyEmail;
+
+  try {
+    await navigator.clipboard.writeText(email);
+    copyEmailButton.innerHTML = 'Endereço copiado <span aria-hidden="true">-&gt;</span>';
+  } catch {
+    copyEmailButton.innerHTML = 'Selecione o e-mail <span aria-hidden="true">-&gt;</span>';
+  }
+});
