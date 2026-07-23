@@ -1139,6 +1139,18 @@ a {
     max-width: none;
   }
 
+  .projects-grid {
+    gap: 12px;
+  }
+
+  .projects-grid article,
+  .projects-grid article + article,
+  .projects-grid article:not(:last-child) {
+    gap: 12px;
+    padding: 16px;
+    border-top: 0;
+  }
+
   .about-editorial {
     margin-bottom: 64px;
     padding-top: 16px;
