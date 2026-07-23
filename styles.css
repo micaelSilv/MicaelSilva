@@ -697,7 +697,7 @@ a {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
+  gap: 16px;
 }
 
 .projects-grid article {
@@ -760,11 +760,10 @@ a {
 
 .projects-grid article + article {
   border-left: 1px solid var(--line);
-  padding-left: 42px;
 }
 
 .projects-grid article:not(:last-child) {
-  padding-right: 42px;
+  padding-right: 24px;
 }
 
 .process-grid {
