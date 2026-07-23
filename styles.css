@@ -707,6 +707,51 @@ a {
   border-radius: var(--radius-md);
 }
 
+.project-gallery {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.project-gallery-main {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  object-fit: cover;
+  background: #0d0d0d;
+}
+
+.project-gallery-thumbs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.project-gallery-thumb {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0d0d0d;
+  cursor: pointer;
+}
+
+.project-gallery-thumb.is-active {
+  border-color: var(--accent);
+}
+
+.project-gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .projects-grid article + article {
   border-left: 1px solid var(--line);
   padding-left: 42px;

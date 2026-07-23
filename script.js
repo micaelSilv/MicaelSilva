@@ -1,27 +1,39 @@
 const projects = [
   {
-    title: "Portfolio pessoal",
-    category: "Site institucional",
+    title: "BI",
+    category: "Dashboards",
     description:
-      "Pagina focada em apresentar servicos, identidade visual e caminhos de contato com clareza.",
-    url: "https://github.com/seuusuario",
-    tech: ["HTML", "CSS", "JavaScript"]
+      "Dashboards para acompanhamento de indicadores e apoio à tomada de decisão.",
+    url: "#contato",
+    tech: ["Power BI", "Indicadores", "Análise de dados"],
+    images: [
+      "Proj/BI%20CORT/1CORT.png",
+      "Proj/BI%20CORT/2CORT.png",
+      "Proj/BI%20Fat/1fat.png",
+      "Proj/BI%20Fat/2fat.png",
+      "Proj/BI%20Fat/3fat.png",
+      "Proj/BI%20LIB/1LIB.png",
+      "Proj/BI%20LIB/2LIB.png",
+      "Proj/BI%20LIB/3LIB.png",
+      "Proj/Inv%20BI/1INV.png",
+      "Proj/Inv%20BI/2INV.png"
+    ]
   },
   {
-    title: "Landing page de produto",
-    category: "Conversao",
+    title: "Ferramentas criadas",
+    category: "Automação",
     description:
-      "Estrutura pensada para destacar beneficios, prova social e chamada para acao principal.",
-    url: "https://github.com/seuusuario",
-    tech: ["Responsivo", "SEO", "Performance"]
+      "Soluções personalizadas para simplificar processos e rotinas de trabalho.",
+    url: "#contato",
+    tech: ["Python", "VBA", "Power Automate"]
   },
   {
-    title: "Dashboard visual",
-    category: "Interface",
+    title: "Planilhas",
+    category: "Excel e VBA",
     description:
-      "Exemplo de interface limpa para visualizacao de dados e componentes reutilizaveis.",
-    url: "https://github.com/seuusuario",
-    tech: ["UI", "UX", "Front-end"]
+      "Planilhas inteligentes para controle, organização e produtividade.",
+    url: "#contato",
+    tech: ["Excel", "VBA", "Power Query"]
   }
 ];
 
@@ -35,9 +47,21 @@ projects.forEach((project, index) => {
   article.style.transitionDelay = `${index * 120}ms`;
 
   article.innerHTML = `
+    ${project.images ? `
+      <div class="project-gallery">
+        <img class="project-gallery-main" src="${project.images[0]}" alt="Tela de dashboard BI" />
+        <div class="project-gallery-thumbs" aria-label="Imagens do projeto BI">
+          ${project.images.map((image, imageIndex) => `
+            <button class="project-gallery-thumb${imageIndex === 0 ? " is-active" : ""}" type="button" data-image="${image}" aria-label="Ver imagem ${imageIndex + 1}">
+              <img src="${image}" alt="" />
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
     <div class="project-top">
       <span class="project-tag">${project.category}</span>
-      <a class="project-link" href="${project.url}" target="_blank" rel="noreferrer">Abrir</a>
+      <a class="project-link" href="${project.url}">Conversar <span aria-hidden="true">-&gt;</span></a>
     </div>
     <div>
       <h3>${project.title}</h3>
@@ -49,6 +73,18 @@ projects.forEach((project, index) => {
   `;
 
   projectsGrid.appendChild(article);
+});
+
+document.querySelectorAll(".project-gallery").forEach((gallery) => {
+  const mainImage = gallery.querySelector(".project-gallery-main");
+
+  gallery.querySelectorAll(".project-gallery-thumb").forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+      mainImage.src = thumbnail.dataset.image;
+      gallery.querySelectorAll(".project-gallery-thumb").forEach((item) => item.classList.remove("is-active"));
+      thumbnail.classList.add("is-active");
+    });
+  });
 });
 
 document.querySelectorAll(".hero-copy, .hero-visual, .about-panel, .process-grid article, .contact-card")
