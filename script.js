@@ -49,26 +49,14 @@ projects.forEach((project, index) => {
   article.innerHTML = `
     ${project.images ? `
       <div class="project-gallery">
-        <img class="project-gallery-main" src="${project.images[0]}" alt="Tela de dashboard BI" />
-        <div class="project-gallery-thumbs" aria-label="Imagens do projeto BI">
-          ${project.images.map((image, imageIndex) => `
-            <button class="project-gallery-thumb${imageIndex === 0 ? " is-active" : ""}" type="button" data-image="${image}" aria-label="Ver imagem ${imageIndex + 1}">
-              <img src="${image}" alt="" />
-            </button>
-          `).join("")}
-        </div>
+        <img class="project-gallery-main" src="${project.images[0]}" alt="Tela do projeto ${project.title}" />
+        <button class="project-gallery-arrow project-gallery-arrow-prev" type="button" aria-label="Imagem anterior">&lsaquo;</button>
+        <button class="project-gallery-arrow project-gallery-arrow-next" type="button" aria-label="Próxima imagem">&rsaquo;</button>
       </div>
     ` : ""}
-    <div class="project-top">
-      <span class="project-tag">${project.category}</span>
-      <a class="project-link" href="${project.url}">Conversar <span aria-hidden="true">-&gt;</span></a>
-    </div>
     <div>
       <h3>${project.title}</h3>
       <p>${project.description}</p>
-    </div>
-    <div class="project-tech">
-      ${project.tech.map((item) => `<span>${item}</span>`).join("")}
     </div>
   `;
 
@@ -77,13 +65,21 @@ projects.forEach((project, index) => {
 
 document.querySelectorAll(".project-gallery").forEach((gallery) => {
   const mainImage = gallery.querySelector(".project-gallery-main");
+  const projectIndex = [...document.querySelectorAll("#projects-grid article")].indexOf(gallery.closest("article"));
+  const project = projects[projectIndex];
+  let currentImageIndex = 0;
 
-  gallery.querySelectorAll(".project-gallery-thumb").forEach((thumbnail) => {
-    thumbnail.addEventListener("click", () => {
-      mainImage.src = thumbnail.dataset.image;
-      gallery.querySelectorAll(".project-gallery-thumb").forEach((item) => item.classList.remove("is-active"));
-      thumbnail.classList.add("is-active");
-    });
+  const showImage = (imageIndex) => {
+    currentImageIndex = (imageIndex + project.images.length) % project.images.length;
+    mainImage.src = project.images[currentImageIndex];
+  };
+
+  gallery.querySelector(".project-gallery-arrow-prev")?.addEventListener("click", () => {
+    showImage(currentImageIndex - 1);
+  });
+
+  gallery.querySelector(".project-gallery-arrow-next")?.addEventListener("click", () => {
+    showImage(currentImageIndex + 1);
   });
 });
 
