@@ -1,6 +1,6 @@
 const projects = [
   {
-    title: "BI",
+    title: "Power BI",
     category: "Dashboards",
     description:
       "Dashboards para acompanhamento de indicadores e apoio à tomada de decisão.",
